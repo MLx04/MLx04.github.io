@@ -575,6 +575,32 @@ footer { border-top: 1px solid var(--rule); padding: 24px 0 40px; font-family: v
           </div>
         </div>
       </article>
+      <article class="case">
+        <div class="case-text">
+          <div class="case-no">CASE <b>02</b></div>
+          <span class="pill"><span data-l="en">Solved</span><span data-l="fr">Résolu</span></span>
+          <h3><span data-l="en">Bypassing a keyword-blacklist WAF with SQL injection — TryHackMe: Light</span><span data-l="fr">Contourner un filtre anti mots-clés par injection SQL — TryHackMe : Light</span></h3>
+          <p data-l="en">A login service on a raw TCP port hid a SQLite backend behind a keyword blacklist. Mixed-case keywords slipped past the filter, and a UNION-based injection dumped the credentials table.</p>
+          <p data-l="fr">Un service de login sur un port TCP brut cachait une base SQLite derrière une liste noire de mots-clés. La casse mixte a trompé le filtre, et une injection UNION a vidé la table des identifiants.</p>
+          <div class="chips def"><span>SQLi</span><span>SQLite</span><span>WAF bypass</span><span>TryHackMe</span></div>
+        </div>
+        <div class="case-vis" aria-hidden="true">
+          <div class="chrome"><i></i><i></i><i></i><span class="ttl">writeup-02.md</span></div>
+          <div class="code">
+            <div><span class="c">## 1. Recon</span></div>
+            <div><span class="p">$</span> nmap -sC -sV -p- 10.10.x.x</div>
+            <div>1337/tcp &middot; "Light database" (SQLite)</div>
+            <div><span class="c">## 2. SQLi detected</span></div>
+            <div><span class="p">&gt;</span> username: <span class="red">'</span> &rarr; unrecognized token &hellip; LIMIT 30</div>
+            <div><span class="c">## 3. WAF bypass</span></div>
+            <div>blocked: <span class="red">-- /* union select</span></div>
+            <div><span class="p">&gt;</span> UnIoN SeLeCt <span class="dim">(mixed case)</span></div>
+            <div><span class="c">## 4. Exfiltration</span></div>
+            <div><span class="p">&gt;</span> group_concat() &rarr; admintable</div>
+            <div>flag: THM{<span class="red">█████████████</span>}</div>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
